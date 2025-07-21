@@ -19,7 +19,7 @@ jobs:
 
     - name: Docker Compose Build & Up
       run: |
-        docker-compose -f docker-compose.yml up -d --build
+        docker compose -f docker-compose.yml up -d --build
 
     - name: Wait for services to be ready
       run: sleep 20
@@ -32,4 +32,4 @@ jobs:
 
     - name: Tear down
       if: always()
-      run: docker-compose -f docker-compose.yml down
+      run: docker compose -f docker-compose.yml down
