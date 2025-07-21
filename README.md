@@ -1,4 +1,4 @@
- 📦 Real-Time Logging Stack using Docker, Loki, Promtail, Grafana & GitHub Actions
+## 📦 Real-Time Logging Stack using Docker, Loki, Promtail, Grafana & GitHub Actions
 
 ![Docker](https://img.shields.io/badge/Docker-Containerization-blue?logo=docker)
 ![Loki](https://img.shields.io/badge/Loki-Log%20Aggregation-purple?logo=grafana)
