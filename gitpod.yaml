@@ -1,0 +1,14 @@
+image: gitpod/workspace-docker
+
+tasks:
+  - name: Start Loki Stack
+    init: docker-compose up -d
+    command: sleep infinity
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+  - port: 3001
+    onOpen: open-preview
+  - port: 3100
+    onOpen: ignore

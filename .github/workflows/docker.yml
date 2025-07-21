@@ -1,0 +1,35 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Docker Compose Build & Up
+      run: |
+        docker-compose -f docker-compose.yml up -d --build
+
+    - name: Wait for services to be ready
+      run: sleep 20
+
+    - name: Check Loki status
+      run: curl -s http://localhost:3100/ready
+
+    - name: Check Promtail log ingestion (optional)
+      run: curl -s "http://localhost:3100/loki/api/v1/labels"
+
+    - name: Tear down
+      if: always()
+      run: docker-compose -f docker-compose.yml down
